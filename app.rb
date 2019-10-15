@@ -20,7 +20,7 @@ require_relative 'lib/player'
 		puts "Voici l'état de chaque joueur :"
 		puts "#{player1.show_state} #{player2.show_state}"
 		puts "Passons à la phase d'attaque.. 3..2..1.. GOOOOOOOO"
-		
+
 		#Player 1 attacks player 2
 		player1.attacks(player2)
 
@@ -36,6 +36,7 @@ require_relative 'lib/player'
 					#Else continue
 					else
 					end
+
 			end
 
 	end
