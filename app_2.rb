@@ -6,7 +6,7 @@ require_relative 'lib/player'
 
 puts "----------------------------------------"
 puts "|--------WELCOME TO THE JUNGLE---------|"
-puts "|IN THIS GAME JUST ON RULE: SURVIVE BRO|"
+puts "|IN THIS GAME JUST ONE RULE :  SURVIVE |"
 puts "----------------------------------------"
 puts "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
 
@@ -20,15 +20,18 @@ player3 = HumanPlayer.new("#{player_name}")
 player1 = Player.new("Josiane")
 player2 = Player.new("José")
 #Create an Array with the enemies
-enemies = Array.new
-enemies << [player1]
-enemies << [player2]
+@enemies = Array.new
+@enemies << player1
+@enemies << player2
 
 #Create a loop while human player is still alive
 #Or while one enemie is still alive
 while player3.lifepoints >= 0 && (player1.lifepoints > 0 || player2.lifepoints > 0)
+	puts "--------------------------"
+	puts " "
 	puts "Voici ton état mon pote : "
 	puts "#{player3.show_state}"
+	puts "--------------------------"
 
 	#Give the menu
 	puts "Quelle action veux-tu effectuer?"
@@ -40,8 +43,11 @@ while player3.lifepoints >= 0 && (player1.lifepoints > 0 || player2.lifepoints >
 	puts "1 - #{player2.show_state}"
 
 	#Get the player choice
+	puts " "
 	print "> "
 	choice = gets.chomp
+	puts " "
+	puts "--------------------------"	
 
 	#Make a action, corresponding to the player choice
 	if choice == "a"
@@ -49,37 +55,60 @@ while player3.lifepoints >= 0 && (player1.lifepoints > 0 || player2.lifepoints >
 	elsif choice == "s"
 		player3.search_health_pack
 	elsif choice == "0"
-		player3.attacks(player1)
+		if player3.lifepoints > 0 
+			player3.attacks(player1)
+				if player1.lifepoints < 0
+					player1.lifepoints = 0
+				else
+				end
+		else
+			puts "Il est déjà mort tu peux pas faire plus..."
+		end
 	elsif choice == "1"
-		player3.attacks(player2)
+		if player3.lifepoints > 0 
+			player3.attacks(player2)
+				if player2.lifepoints < 0
+					player2.lifepoints = 0
+				else
+				end
+		else
+			puts "Il est déjà mort tu peux pas faire plus..."
+		end
 	else
 	end
 
+	puts " "
+	puts "------------------------------------------------------"
 	puts "Au tour des autres joueurs d'attaquer, c'est parti !!!"
+	puts "------------------------------------------------------"
+	puts " "
 
 	#Make the action attacks for each enemies
-	enemies.each do |item|
-		enemies[item].attacks(player3)
-		if enemies.item.lifepoints <= 0
-			break
-		else
-		end
+	@enemies.each do |enemy| 
+			if enemy.lifepoints > 0
+				enemy.attacks(player3)
+			else
+				puts "Le joueur #{enemy.name} est mort, il ne peut pas t'attaquer"
+			end
 	end
-
-		
-
-
-
-
 	
 end
 
+puts " "
+puts " "
+puts " "
 puts "Hélas la partie est déjà finie......"
+puts " "
+puts " "
 
 if player3.lifepoints >= 0
-	puts "BRAVOOOO TU AS GAGNE TE TROWW FOR"
+	puts "------------------------------------"
+	puts "---BRAVOOOO TU AS GAGNE CHAMPION----"
+	puts "------------------------------------"
 else
-	puts "PFFFF T TRO NUL LOOOSER, T MOR..."
+	puts "------------------------------------"
+	puts "T'as réussi à perdre à ce jeu looser"
+	puts "------------------------------------"
 end
 
-binding.pry 
+#binding.pry 
