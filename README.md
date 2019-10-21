@@ -1,4 +1,4 @@
 <!DOCTYPE html>
 <html>
-<h1>Ce document contient les exercices concernant le .... </h1>
+<h2>Ce document contient les exercices concernant le "GOSSIP PROJECT" </h2>
 </html>
