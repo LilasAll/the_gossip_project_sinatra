@@ -22,6 +22,7 @@ class Gossip
 		#initialise un array vide
 		all_gossips = [] 
 		CSV.read("./db/gossip.csv").each do |csv_line|
+			#Prend chaque nouveau potin et l'ajoute au fichier csv
 			all_gossips << Gossip.new(csv_line[0], csv_line[1])	
 		end
 		return all_gossips

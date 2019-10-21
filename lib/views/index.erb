@@ -7,9 +7,9 @@
     <h2>Tu veux assouvir des envies de gossip hein? </h2>
     <h4>Pour l'instant, il n'y a pas de potin... Mais ça arrive!</h4>
 
-
+    <%#Ajoute un lien pour aller sur la page d'ajout de potin%>
     <a href="/gossips/new/">Tu peux ajouter un potin par ici</a>
-
+    <%#prend pour gossip chaque valeur de author, content et index pour le lien %>
     <% gossip.each_with_index do |gossip, index| %>
         <p>
           <%= gossip.author %><br/>
