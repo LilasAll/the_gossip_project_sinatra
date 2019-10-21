@@ -9,5 +9,12 @@
 
 
     <a href="/gossips/new/">Tu peux ajouter un potin par ici</a>
+
+    <% gossip.each do |gossip| %>
+        <p>
+          <%= gossip.author %><br/>
+          <%= gossip.content %>
+        </p>
+      <% end %>
   </body>
 </html>
