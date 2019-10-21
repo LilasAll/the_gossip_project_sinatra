@@ -5,6 +5,6 @@ Bundler.require
 #Pour lire tous les fichiers du dossier lib
 $:.unshift File.expand_path("./../lib", __FILE__)
 
-require './controller'
+require './lib/controller'
 
 run ApplicationController
