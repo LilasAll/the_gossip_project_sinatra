@@ -28,9 +28,11 @@ class Gossip
 	end
 
 	def self.find(id)
+		#Associe à author l'auteur du potin à l'id fixé dans l'url
 		@author = self.all[id.to_i].author
 		@content = self.all[id.to_i].content
 		return [@author, @content]
+		#En une seule ligne : 
 		#return [self.all[id.to_i].author,  self.all[id.to_i].content].join(" à écrit : ")
 	end
 

@@ -10,10 +10,11 @@
 
     <a href="/gossips/new/">Tu peux ajouter un potin par ici</a>
 
-    <% gossip.each do |gossip| %>
+    <% gossip.each_with_index do |gossip, index| %>
         <p>
           <%= gossip.author %><br/>
-          <%= gossip.content %>
+          <%= gossip.content %><br/>
+          <a href="/gossips/<%= index %>"> Lien vers le potin</a>
         </p>
       <% end %>
   </body>
