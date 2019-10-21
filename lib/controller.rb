@@ -18,6 +18,17 @@ class ApplicationController < Sinatra::Base
 		redirect '/'
 	end
 
+	get '/gossips/:id' do
+		#@gossip	=	all_gossips.select do |gossip|
+		# gossip.id == params[:id]
+		#end.first
+		#{}"Voici le numéro du potin que tu veux: #{params['id']}!"
+		#erb :'/gossips/show.html'
+		id = params['id']
+		Gossip.find(id)
+		erb :show, locals: {gossip: Gossip.all}
+	end
+
 
 	#post '/gossips/new/' do
 	#  puts "Salut, je suis dans le serveur"
