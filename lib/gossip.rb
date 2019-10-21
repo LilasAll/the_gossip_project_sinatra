@@ -36,6 +36,26 @@ class Gossip
 		#En une seule ligne : 
 		#return [self.all[id.to_i].author,  self.all[id.to_i].content].join(" à écrit : ")
 	end
+	
+	def self.update(author, content, id)
+		 all_gossips = [] # récup du csv sous forme de tableau
+	    CSV.read("db/gossip.csv").each do |csv_line|
+	      all_gossips << Gossip.new(csv_line[0], csv_line[1])
+	    end
+
+	    all_gossips.each_with_index do |gossip, i|
+	      if id-1 == i # si l'id correspond au numéro de ligne on modifie l'index du tableau
+		all_gossips[i] = Gossip.new(@author, @content)
+	      end
+	    end
+
+	    CSV.open("db/gossip.csv", "wb") do |csv| # réécriture tout le csv à partir du tableau modifié
+	      all_gossips.each do |gossip|
+		csv << [gossip.author, gossip.content]
+	      end
+	    end
+		
+	end
 
 end
 
